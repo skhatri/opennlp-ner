@@ -1,5 +1,6 @@
 # opennlp-ner
 NER Examples
 
-Download models from http://opennlp.sourceforge.net/models-1.5/
+OpenNLP Models from http://opennlp.sourceforge.net/models-1.5/
 
+Run ./download-models.sh to get models
