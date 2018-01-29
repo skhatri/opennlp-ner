@@ -1,13 +1,37 @@
 apply plugin: "java"
 apply plugin: "idea"
 
-sourceCompatibility = 1.9
-targetCompatibility = 1.9
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+    ext {
+        openNLPVersion = '1.8.4'
+        junitPlatformVersion = '1.0.3'
+        junitJupiterVersion = '5.0.3'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
+    }
+}
+
+apply plugin: "org.junit.platform.gradle.plugin"
 
 dependencies {
-  compile "org.apache.opennlp:opennlp:1.8.4"
+    compile "org.apache.opennlp:opennlp-tools:$openNLPVersion"
+    testCompile "org.junit.platform:junit-platform-commons:$junitPlatformVersion"
+    testCompile "org.junit.platform:junit-platform-engine:$junitPlatformVersion"
+    testCompile "org.junit.platform:junit-platform-runner:$junitPlatformVersion"
+
+    testCompile "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+
+    testCompile "org.junit.vintage:junit-vintage-engine:4.12.3"
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
